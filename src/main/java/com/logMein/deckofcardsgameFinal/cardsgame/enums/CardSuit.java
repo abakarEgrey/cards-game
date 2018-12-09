@@ -1,5 +1,8 @@
-package com.jivecommunications.deckofcardsgame.enums;
+package com.logMein.deckofcardsgameFinal.cardsgame.enums;
 
+/**
+ * The enum of the four suits of cards : hearts, spades, clubs and diamonds
+ */
 public enum CardSuit {
     HEARTS (1),
     SPADES(2),
@@ -17,7 +20,11 @@ public enum CardSuit {
         return value;
     }
 
-
+    /**
+     * Get a suit of card from its value
+     * @param value suit value
+     * @return the suit of card
+     */
     public static CardSuit fromValue(int value){
         for(CardSuit cardSuit : values()){
             if( cardSuit.value == value){

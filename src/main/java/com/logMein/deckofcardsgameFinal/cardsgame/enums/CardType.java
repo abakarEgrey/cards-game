@@ -1,5 +1,8 @@
-package com.jivecommunications.deckofcardsgame.enums;
+package com.logMein.deckofcardsgameFinal.cardsgame.enums;
 
+/**
+ * CardType contains different type of cards
+ */
 public enum CardType {
     ACE(1),
     TWO(2),
@@ -24,6 +27,12 @@ public enum CardType {
         return this.value;
     }
 
+    /**
+     * Get a card type from a its value
+     *
+     * @param value the integer value of a card
+     * @return the card type
+     */
     public static CardType fromValue(int value){
         for(CardType cardType : values()){
             if( cardType.value == value){
