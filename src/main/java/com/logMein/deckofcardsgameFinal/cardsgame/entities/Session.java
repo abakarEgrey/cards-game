@@ -1,11 +1,25 @@
-package com.jivecommunications.deckofcardsgame.entities;
+package com.logMein.deckofcardsgameFinal.cardsgame.entities;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Random;
 
-public class Session {
+@Entity
+@Table(name = "session")
+public class Session implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
+    private Long id;
 
     private long lastGameId;
     private long lastPlayerId;
+
+    public Session() {
+        //this.lastGameId = new Random().nextInt();
+        //this.lastGameId = new Random().nextInt();
+    }
 
     public long getLastGameId() {
         return lastGameId;
@@ -23,8 +37,4 @@ public class Session {
         this.lastPlayerId = lastPlayerId;
     }
 
-    public Session() {
-        this.lastGameId = new Random().nextInt();
-        this.lastGameId = new Random().nextInt();
-    }
 }

@@ -1,21 +1,19 @@
-package com.jivecommunications.deckofcardsgame.services;
+package com.logMein.deckofcardsgameFinal.cardsgame.services;
 
-import com.jivecommunications.deckofcardsgame.entities.Card;
-import com.jivecommunications.deckofcardsgame.entities.Game;
-import com.jivecommunications.deckofcardsgame.entities.Player;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import com.logMein.deckofcardsgameFinal.cardsgame.entities.Card;
+import com.logMein.deckofcardsgameFinal.cardsgame.entities.Player;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class PlayerService {
 
+    @Autowired
     private SessionService sessionService;
 
-    public PlayerService() {
-        this.sessionService = SessionService.getInstance();
-    }
-
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Player createPlayer(String name) {
         Long id = this.sessionService.incrementPlayerId();
         Player player = new Player(id, name);
@@ -23,7 +21,13 @@ public class PlayerService {
         return player;
     }
 
-    public static Player addCard(Player player, Card card) {
+    /**
+     *
+     * @param player
+     * @param card
+     * @return
+     */
+    public Player addCard(Player player, Card card) {
         player.getCards().add(card);
         int handValue  = player.getHandValue() ;
         handValue +=card.getCardType().getValue();
@@ -31,7 +35,13 @@ public class PlayerService {
         return player;
     }
 
-    public static Player removeCard(Player player, Card card) {
+    /**
+     *
+     * @param player
+     * @param card
+     * @return
+     */
+    public Player removeCard(Player player, Card card) {
         player.getCards().remove(card);
         int handValue  = player.getHandValue() ;
         handValue -=card.getCardType().getValue();
